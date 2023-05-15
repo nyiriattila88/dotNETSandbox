@@ -1,0 +1,4 @@
+<Project>
+  <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(SolutionDir)\..\, Directory.Build.props))\Directory.Build.props" />
+  
+</Project>

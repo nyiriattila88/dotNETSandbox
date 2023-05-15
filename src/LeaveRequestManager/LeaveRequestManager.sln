@@ -1,0 +1,73 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31912.275
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeaveRequestManager.Web", "LeaveRequestManager.Web\LeaveRequestManager.Web.csproj", "{77D4519D-33ED-4F45-9D68-7FB03B7EFA7E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeaveRequestManager.Data", "LeaveRequestManager.Data\LeaveRequestManager.Data.csproj", "{FFB42B0E-83CD-42F1-BE33-69C9D7B6A8C5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeaveRequestManager.Common", "LeaveRequestManager.Common\LeaveRequestManager.Common.csproj", "{1015C91D-9100-4681-9652-0D56DAD357E8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeaveRequestManager.Application", "LeaveRequestManager.Application\LeaveRequestManager.Application.csproj", "{9BC62F2F-78E1-4B58-9110-4526CEFDB4AB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{1298DF1C-7777-4640-9EE7-67F7701B4F27}"
+	ProjectSection(SolutionItems) = preProject
+		Directory.Build.props = Directory.Build.props
+		Directory.Build.targets = Directory.Build.targets
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeaveRequestManager.Application.Tests", "LeaveRequestManager.Application.Tests\LeaveRequestManager.Application.Tests.csproj", "{6ED45863-2058-4A03-8FD6-ADF4A0B21A1C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeaveRequestManager.Common.Tests", "LeaveRequestManager.Common.Tests\LeaveRequestManager.Common.Tests.csproj", "{E6474318-6AE7-45B3-A3B8-044879997A3C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeaveRequestManager.Data.Tests", "LeaveRequestManager.Data.Tests\LeaveRequestManager.Data.Tests.csproj", "{93D6649D-9275-4A10-B2D9-B3732E6275CF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeaveRequestManager.Web.Tests", "LeaveRequestManager.Web.Tests\LeaveRequestManager.Web.Tests.csproj", "{11FC3462-B09B-44EE-BD88-4AABF272AB98}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{77D4519D-33ED-4F45-9D68-7FB03B7EFA7E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77D4519D-33ED-4F45-9D68-7FB03B7EFA7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77D4519D-33ED-4F45-9D68-7FB03B7EFA7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77D4519D-33ED-4F45-9D68-7FB03B7EFA7E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FFB42B0E-83CD-42F1-BE33-69C9D7B6A8C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FFB42B0E-83CD-42F1-BE33-69C9D7B6A8C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FFB42B0E-83CD-42F1-BE33-69C9D7B6A8C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FFB42B0E-83CD-42F1-BE33-69C9D7B6A8C5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1015C91D-9100-4681-9652-0D56DAD357E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1015C91D-9100-4681-9652-0D56DAD357E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1015C91D-9100-4681-9652-0D56DAD357E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1015C91D-9100-4681-9652-0D56DAD357E8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9BC62F2F-78E1-4B58-9110-4526CEFDB4AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9BC62F2F-78E1-4B58-9110-4526CEFDB4AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9BC62F2F-78E1-4B58-9110-4526CEFDB4AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9BC62F2F-78E1-4B58-9110-4526CEFDB4AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6ED45863-2058-4A03-8FD6-ADF4A0B21A1C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6ED45863-2058-4A03-8FD6-ADF4A0B21A1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6ED45863-2058-4A03-8FD6-ADF4A0B21A1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6ED45863-2058-4A03-8FD6-ADF4A0B21A1C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E6474318-6AE7-45B3-A3B8-044879997A3C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E6474318-6AE7-45B3-A3B8-044879997A3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E6474318-6AE7-45B3-A3B8-044879997A3C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E6474318-6AE7-45B3-A3B8-044879997A3C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{93D6649D-9275-4A10-B2D9-B3732E6275CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{93D6649D-9275-4A10-B2D9-B3732E6275CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{93D6649D-9275-4A10-B2D9-B3732E6275CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{93D6649D-9275-4A10-B2D9-B3732E6275CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{11FC3462-B09B-44EE-BD88-4AABF272AB98}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{11FC3462-B09B-44EE-BD88-4AABF272AB98}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{11FC3462-B09B-44EE-BD88-4AABF272AB98}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{11FC3462-B09B-44EE-BD88-4AABF272AB98}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {18E1CE36-524D-4383-83CC-2B6A83D95035}
+	EndGlobalSection
+EndGlobal
