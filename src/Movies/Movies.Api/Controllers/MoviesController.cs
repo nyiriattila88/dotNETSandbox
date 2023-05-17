@@ -18,7 +18,7 @@ public class MoviesController : ControllerBase
         _movieRepository = movieRepository;
     }
 
-    [HttpPost("movies")]
+    [HttpPost(ApiEndpoints.Movies.Create)]
     public async Task<IActionResult> Create([FromBody] CreateMovieRequest request)
     {
         Movie movie = request.MapToMovie();
