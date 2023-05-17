@@ -18,7 +18,7 @@ public class MoviesController : ControllerBase
     }
 
     [HttpPost(ApiEndpoints.Movies.Create)]
-    public async Task<ActionResult<MovieResponse>> Create([FromBody] CreateMovieRequest request)
+    public async Task<IActionResult> Create([FromBody] CreateMovieRequest request)
     {
         Movie movie = request.MapToMovie();
         await _movieRepository.CreateAsync(movie);
@@ -28,16 +28,25 @@ public class MoviesController : ControllerBase
     }
 
     [HttpGet(ApiEndpoints.Movies.GetAll)]
-    public async Task<ActionResult<MoviesResponse>> GetAll()
+    public async Task<IActionResult> GetAll()
     {
         IEnumerable<Movie> movies = await _movieRepository.GetAllAsync();
         return Ok(movies.MapToMoviesResponse());
     }
 
     [HttpGet(ApiEndpoints.Movies.Get)]
-    public async Task<ActionResult<MovieResponse>> Get([FromRoute] Guid id)
+    public async Task<IActionResult> Get([FromRoute] Guid id)
     {
         Movie? movie = await _movieRepository.GetByIdAsync(id);
         return movie is not null ? Ok(movie.MapToMovieResponse()) : NotFound();
+    }
+
+    [HttpPut(ApiEndpoints.Movies.Update)]
+    public async Task<IActionResult> Update([FromRoute] Guid id, [FromBody] UpdateMovieRequest request)
+    {
+        Movie movie = request.MapToMovie(id);
+        bool updated = await _movieRepository.UpdateAsync(movie);
+
+        return updated ? Ok(movie.MapToMovieResponse()) : NotFound();
     }
 }
