@@ -1,5 +1,9 @@
 <Project>
 
+  <PropertyGroup Condition="'$(IsTestProject)' == 'true'">
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
   <ItemGroup Condition="'$(IsTestProject)' == 'true'">
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.5.0" />
     <PackageReference Include="MSTest.TestAdapter" Version="3.0.2" />
@@ -15,6 +19,6 @@
     <Using Include="FluentAssertions" />
     <Using Include="Moq" />
   </ItemGroup>
-  
+
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(SolutionDir)\..\, Directory.Build.targets))\Directory.Build.targets" />
 </Project>
