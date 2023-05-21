@@ -5,6 +5,7 @@ namespace CityInfo.API.Controllers;
 [ApiController]
 public class CitiesController : ControllerBase
 {
+    [HttpGet(ApiEndpoints.Cities.GetAll)]
     public JsonResult GetCities()
     {
         return new JsonResult(
