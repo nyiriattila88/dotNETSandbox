@@ -19,15 +19,15 @@ public class CitiesDataStore
                 Id = 1,
                 Name = "New York City",
                 Description = "A city from the USA.",
-                PointsOfInterests = new List<PointOfInterestsDto>
+                PointsOfInterests = new List<PointOfInterestDto>
                 {
-                    new PointOfInterestsDto
+                    new PointOfInterestDto
                     {
                         Id = 1,
                         Name = "Central Park",
                         Description = "The most visited park in the US."
                     },
-                    new PointOfInterestsDto
+                    new PointOfInterestDto
                     {
                         Id = 2,
                         Name = "Empire State Building",
@@ -40,9 +40,9 @@ public class CitiesDataStore
                 Id = 2,
                 Name = "London",
                 Description = "A city from the UK.",
-                PointsOfInterests = new List<PointOfInterestsDto>
+                PointsOfInterests = new List<PointOfInterestDto>
                 {
-                    new PointOfInterestsDto
+                    new PointOfInterestDto
                     {
                         Id = 1,
                         Name = "Big Ben",
@@ -55,9 +55,9 @@ public class CitiesDataStore
                 Id = 3,
                 Name = "Paris",
                 Description = "A city from France.",
-                PointsOfInterests = new List<PointOfInterestsDto>
+                PointsOfInterests = new List<PointOfInterestDto>
                 {
-                    new PointOfInterestsDto
+                    new PointOfInterestDto
                     {
                         Id = 1,
                         Name = "Eiffel Tower",

@@ -8,7 +8,10 @@ namespace CityInfo.API.Controllers;
 public class CitiesController : ControllerBase
 {
     [HttpGet]
-    public ActionResult<IEnumerable<CityDto>> GetCities() => Ok(CitiesDataStore.Instance.Cities);
+    public ActionResult<IEnumerable<CityDto>> GetCities()
+    {
+        return Ok(CitiesDataStore.Instance.Cities);
+    }
 
     [HttpGet("{id}")]
     public ActionResult<CityDto> GetCity(int id)

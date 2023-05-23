@@ -16,7 +16,7 @@ public class FilesController : ControllerBase
     }
 
     [HttpGet]
-    public ActionResult GetFileNames()
+    public ActionResult<IEnumerable<string>> GetFileNames()
     {
         string directoryPath = "Resources";
 

@@ -10,5 +10,5 @@ public record CityDto
 
     public int NumberOfPointsOfInterest => PointsOfInterests?.Count ?? 0;
 
-    public ICollection<PointOfInterestsDto> PointsOfInterests { get; set; } = new List<PointOfInterestsDto>();
+    public ICollection<PointOfInterestDto> PointsOfInterests { get; set; } = new List<PointOfInterestDto>();
 }
