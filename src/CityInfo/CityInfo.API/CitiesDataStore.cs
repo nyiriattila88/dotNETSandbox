@@ -7,14 +7,12 @@ namespace CityInfo.API;
 /// </summary>
 public class CitiesDataStore
 {
-    private static readonly Lazy<CitiesDataStore> instance = new(() => new CitiesDataStore());
-    public static CitiesDataStore Instance { get; } = instance.Value;
-
-    private CitiesDataStore()
+    public IEnumerable<CityDto> Cities
     {
-        Cities = new List<CityDto>
+        get
         {
-            new CityDto()
+
+            yield return new CityDto()
             {
                 Id = 1,
                 Name = "New York City",
@@ -34,8 +32,9 @@ public class CitiesDataStore
                         Description = "A skyscraper located in Midtown Manhattan."
                     },
                 },
-            },
-            new CityDto()
+            };
+
+            yield return new CityDto()
             {
                 Id = 2,
                 Name = "London",
@@ -49,8 +48,9 @@ public class CitiesDataStore
                         Description = "Iconic building of London."
                     },
                 }
-            },
-            new CityDto()
+            };
+
+            yield return new CityDto()
             {
                 Id = 3,
                 Name = "Paris",
@@ -64,9 +64,8 @@ public class CitiesDataStore
                         Description = "Iconic building of Paris."
                     },
                 },
-            },
-        };
-    }
+            };
 
-    public IEnumerable<CityDto> Cities { get; }
+        }
+    }
 }

@@ -7,10 +7,17 @@ namespace CityInfo.API.Controllers;
 [ApiController]
 public class PointsOfInterestsController : ControllerBase
 {
+    private readonly CitiesDataStore _citiesDataStore;
+
+    public PointsOfInterestsController(CitiesDataStore citiesDataStore)
+    {
+        _citiesDataStore = citiesDataStore;
+    }
+
     [HttpGet]
     public ActionResult<IEnumerable<PointOfInterestDto>> GetAll(int cityId)
     {
-        CityDto? city = CitiesDataStore.Instance.Cities.FirstOrDefault(c => c.Id == cityId);
+        CityDto? city = _citiesDataStore.Cities.FirstOrDefault(c => c.Id == cityId);
         if (city is null)
             return NotFound();
 
@@ -20,7 +27,7 @@ public class PointsOfInterestsController : ControllerBase
     [HttpGet("{pointOfInterestId}", Name = nameof(GetById))]
     public ActionResult<PointOfInterestDto> GetById(int cityId, int pointOfInterestId)
     {
-        CityDto? city = CitiesDataStore.Instance.Cities.FirstOrDefault(c => c.Id == cityId);
+        CityDto? city = _citiesDataStore.Cities.FirstOrDefault(c => c.Id == cityId);
         if (city is null)
             return NotFound();
 
@@ -31,11 +38,11 @@ public class PointsOfInterestsController : ControllerBase
     [HttpPost]
     public ActionResult<PointOfInterestDto> Create(int cityId, PointOfInterestCreateDto pointOfInterest)
     {
-        CityDto? city = CitiesDataStore.Instance.Cities.FirstOrDefault(c => c.Id == cityId);
+        CityDto? city = _citiesDataStore.Cities.FirstOrDefault(c => c.Id == cityId);
         if (city is null)
             return NotFound();
 
-        int maxPointOfInterestId = CitiesDataStore.Instance.Cities.SelectMany(c => c.PointsOfInterests).Max(p => p.Id);
+        int maxPointOfInterestId = _citiesDataStore.Cities.SelectMany(c => c.PointsOfInterests).Max(p => p.Id);
 
         var finalPointOfInterest = new PointOfInterestDto()
         {
@@ -58,7 +65,7 @@ public class PointsOfInterestsController : ControllerBase
     [HttpPut("{pointOfInterestId}")]
     public ActionResult Update(int cityId, int pointOfInterestId, PointOfInterestUpdateDto pointOfInterest)
     {
-        CityDto? city = CitiesDataStore.Instance.Cities.FirstOrDefault(c => c.Id == cityId);
+        CityDto? city = _citiesDataStore.Cities.FirstOrDefault(c => c.Id == cityId);
         if (city is null)
             return NotFound();
 

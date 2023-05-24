@@ -1,3 +1,4 @@
+using CityInfo.API;
 using Microsoft.AspNetCore.StaticFiles;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
@@ -13,6 +14,7 @@ builder.Services.AddControllers(options =>
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddSingleton<FileExtensionContentTypeProvider>();
+builder.Services.AddSingleton<CitiesDataStore>();
 
 WebApplication app = builder.Build();
 
