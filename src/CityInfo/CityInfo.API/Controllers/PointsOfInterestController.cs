@@ -92,8 +92,8 @@ public class PointsOfInterestController : ControllerBase
 
         var pointOfInterestUpdateDto = new PointOfInterestUpdateDto()
         {
-            Name = pointOfInterestPatchDto.Name is not null ? pointOfInterestPatchDto.Name.Value.Value : pointOfInterestFromStore.Name,
-            Description = pointOfInterestPatchDto.Description is not null ? pointOfInterestPatchDto.Description.Value.Value : pointOfInterestFromStore.Description,
+            Name = pointOfInterestPatchDto.Name is not null ? pointOfInterestPatchDto.Name.Value.NewValue : pointOfInterestFromStore.Name,
+            Description = pointOfInterestPatchDto.Description is not null ? pointOfInterestPatchDto.Description.Value.NewValue : pointOfInterestFromStore.Description,
         };
 
         return Update(cityId, pointOfInterestId, pointOfInterestUpdateDto);
