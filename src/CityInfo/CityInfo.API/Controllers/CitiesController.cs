@@ -15,10 +15,7 @@ public class CitiesController : ControllerBase
     }
 
     [HttpGet]
-    public ActionResult<IEnumerable<CityDto>> GetAll()
-    {
-        return Ok(_citiesDataStore.Cities);
-    }
+    public ActionResult<IEnumerable<CityDto>> GetAll() => Ok(_citiesDataStore.Cities);
 
     [HttpGet($"{{{nameof(id)}}}")]
     public ActionResult<CityDto> GetById(int id)
