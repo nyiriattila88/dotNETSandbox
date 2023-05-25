@@ -12,7 +12,7 @@ public record CityDto
 
     public string? Description { get; set; }
 
-    public int NumberOfPointsOfInterest => PointOfInterest?.Count ?? 0;
+    public int NumberOfPointsOfInterest => PointsOfInterest?.Count ?? 0;
 
-    public ICollection<PointOfInterestDto> PointOfInterest { get; set; } = new List<PointOfInterestDto>();
+    public ICollection<PointOfInterestDto> PointsOfInterest { get; set; } = new List<PointOfInterestDto>();
 }
