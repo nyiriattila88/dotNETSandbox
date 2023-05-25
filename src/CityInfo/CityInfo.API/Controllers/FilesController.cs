@@ -27,7 +27,7 @@ public class FilesController : ControllerBase
         return Ok(fileNames);
     }
 
-    [HttpGet("{fileName}")]
+    [HttpGet($"{{{nameof(fileName)}}}")]
     public ActionResult GetByName(string fileName)
     {
         string filePath = Path.GetFullPath($"Resources/{fileName}");

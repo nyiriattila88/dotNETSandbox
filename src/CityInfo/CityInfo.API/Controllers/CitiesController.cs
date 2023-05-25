@@ -20,7 +20,7 @@ public class CitiesController : ControllerBase
         return Ok(_citiesDataStore.Cities);
     }
 
-    [HttpGet("{id}")]
+    [HttpGet($"{{{nameof(id)}}}")]
     public ActionResult<CityDto> GetById(int id)
     {
         CityDto? city = _citiesDataStore.Cities.FirstOrDefault(c => c.Id == id);
