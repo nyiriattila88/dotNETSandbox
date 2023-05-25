@@ -21,7 +21,7 @@ public class PointsOfInterestController : ControllerBase
         if (city is null)
             return NotFound();
 
-        return Ok(city.PointOfInterest ?? Enumerable.Empty<PointOfInterestDto>());
+        return Ok(city.PointsOfInterest ?? Enumerable.Empty<PointOfInterestDto>());
     }
 
     [HttpGet($"{{{nameof(pointOfInterestId)}}}", Name = nameof(GetById))]
@@ -31,7 +31,7 @@ public class PointsOfInterestController : ControllerBase
         if (city is null)
             return NotFound();
 
-        PointOfInterestDto? pointOfInterest = city.PointOfInterest.FirstOrDefault(c => c.Id == pointOfInterestId);
+        PointOfInterestDto? pointOfInterest = city.PointsOfInterest.FirstOrDefault(c => c.Id == pointOfInterestId);
         return pointOfInterest is not null ? Ok(pointOfInterest) : NotFound();
     }
 
@@ -42,7 +42,7 @@ public class PointsOfInterestController : ControllerBase
         if (city is null)
             return NotFound();
 
-        int maxPointOfInterestId = _citiesDataStore.Cities.SelectMany(c => c.PointOfInterest).Max(p => p.Id);
+        int maxPointOfInterestId = _citiesDataStore.Cities.SelectMany(c => c.PointsOfInterest).Max(p => p.Id);
 
         var finalPointOfInterest = new PointOfInterestDto()
         {
@@ -51,7 +51,7 @@ public class PointsOfInterestController : ControllerBase
             Description = pointOfInterestCreateDto.Description
         };
 
-        city.PointOfInterest.Add(finalPointOfInterest);
+        city.PointsOfInterest.Add(finalPointOfInterest);
 
         return CreatedAtRoute(nameof(GetById),
              new
@@ -69,7 +69,7 @@ public class PointsOfInterestController : ControllerBase
         if (city is null)
             return NotFound();
 
-        PointOfInterestDto? pointOfInterestFromStore = city.PointOfInterest.FirstOrDefault(c => c.Id == pointOfInterestId);
+        PointOfInterestDto? pointOfInterestFromStore = city.PointsOfInterest.FirstOrDefault(c => c.Id == pointOfInterestId);
         if (pointOfInterestFromStore is null)
             return NotFound();
 
@@ -86,7 +86,7 @@ public class PointsOfInterestController : ControllerBase
         if (city is null)
             return NotFound();
 
-        PointOfInterestDto? pointOfInterestFromStore = city.PointOfInterest.FirstOrDefault(c => c.Id == pointOfInterestId);
+        PointOfInterestDto? pointOfInterestFromStore = city.PointsOfInterest.FirstOrDefault(c => c.Id == pointOfInterestId);
         if (pointOfInterestFromStore is null)
             return NotFound();
 
@@ -97,5 +97,21 @@ public class PointsOfInterestController : ControllerBase
         };
 
         return Update(cityId, pointOfInterestId, pointOfInterestUpdateDto);
+    }
+
+    [HttpDelete($"{{{nameof(pointOfInterestId)}}}")]
+    public ActionResult Delete(int cityId, int pointOfInterestId)
+    {
+        CityDto? city = _citiesDataStore.Cities.FirstOrDefault(c => c.Id == cityId);
+        if (city is null)
+            return NotFound();
+
+        PointOfInterestDto? pointOfInterestFromStore = city.PointsOfInterest.FirstOrDefault(c => c.Id == pointOfInterestId);
+        if (pointOfInterestFromStore is null)
+            return NotFound();
+
+        city.PointsOfInterest.Remove(pointOfInterestFromStore);
+
+        return NoContent();
     }
 }
