@@ -19,7 +19,7 @@ public class PointsOfInterestController : ControllerBase
     [HttpGet]
     public ActionResult<IEnumerable<PointOfInterestDto>> GetAll(int cityId)
     {
-        CityDto? city = _citiesDataStore.Cities.FirstOrDefault(c => c.Id == cityId);
+        CityDto? city = FindCityByIdOrDefault(cityId);
         if (city is null)
             return NotFound();
 
@@ -29,21 +29,18 @@ public class PointsOfInterestController : ControllerBase
     [HttpGet($"{{{nameof(pointOfInterestId)}}}", Name = nameof(GetById))]
     public ActionResult<PointOfInterestDto> GetById(int cityId, int pointOfInterestId)
     {
-        CityDto? city = _citiesDataStore.Cities.FirstOrDefault(c => c.Id == cityId);
+        CityDto? city = FindCityByIdOrDefault(cityId);
         if (city is null)
-        {
-            _logger.LogInformation($"City with id {cityId} wasn't found when accessing points of interest.");
             return NotFound();
-        }
 
-        PointOfInterestDto? pointOfInterest = city.PointsOfInterest.FirstOrDefault(c => c.Id == pointOfInterestId);
+        PointOfInterestDto? pointOfInterest = FindPointOfInterestByIdOrDefault(city, pointOfInterestId);
         return pointOfInterest is not null ? Ok(pointOfInterest) : NotFound();
     }
 
     [HttpPost]
     public ActionResult<PointOfInterestDto> Create(int cityId, PointOfInterestCreateDto pointOfInterestCreateDto)
     {
-        CityDto? city = _citiesDataStore.Cities.FirstOrDefault(c => c.Id == cityId);
+        CityDto? city = FindCityByIdOrDefault(cityId);
         if (city is null)
             return NotFound();
 
@@ -70,11 +67,11 @@ public class PointsOfInterestController : ControllerBase
     [HttpPut($"{{{nameof(pointOfInterestId)}}}")]
     public ActionResult Update(int cityId, int pointOfInterestId, PointOfInterestUpdateDto pointOfInterestUpdateDto)
     {
-        CityDto? city = _citiesDataStore.Cities.FirstOrDefault(c => c.Id == cityId);
+        CityDto? city = FindCityByIdOrDefault(cityId);
         if (city is null)
             return NotFound();
 
-        PointOfInterestDto? pointOfInterestFromStore = city.PointsOfInterest.FirstOrDefault(c => c.Id == pointOfInterestId);
+        PointOfInterestDto? pointOfInterestFromStore = FindPointOfInterestByIdOrDefault(city, pointOfInterestId);
         if (pointOfInterestFromStore is null)
             return NotFound();
 
@@ -87,11 +84,11 @@ public class PointsOfInterestController : ControllerBase
     [HttpPatch($"{{{nameof(pointOfInterestId)}}}")]
     public ActionResult Patch(int cityId, int pointOfInterestId, PointOfInterestPatchDto pointOfInterestPatchDto)
     {
-        CityDto? city = _citiesDataStore.Cities.FirstOrDefault(c => c.Id == cityId);
+        CityDto? city = FindCityByIdOrDefault(cityId);
         if (city is null)
             return NotFound();
 
-        PointOfInterestDto? pointOfInterestFromStore = city.PointsOfInterest.FirstOrDefault(c => c.Id == pointOfInterestId);
+        PointOfInterestDto? pointOfInterestFromStore = FindPointOfInterestByIdOrDefault(city, pointOfInterestId);
         if (pointOfInterestFromStore is null)
             return NotFound();
 
@@ -107,16 +104,34 @@ public class PointsOfInterestController : ControllerBase
     [HttpDelete($"{{{nameof(pointOfInterestId)}}}")]
     public ActionResult Delete(int cityId, int pointOfInterestId)
     {
-        CityDto? city = _citiesDataStore.Cities.FirstOrDefault(c => c.Id == cityId);
+        CityDto? city = FindCityByIdOrDefault(cityId);
         if (city is null)
             return NotFound();
 
-        PointOfInterestDto? pointOfInterestFromStore = city.PointsOfInterest.FirstOrDefault(c => c.Id == pointOfInterestId);
+        PointOfInterestDto? pointOfInterestFromStore = FindPointOfInterestByIdOrDefault(city, pointOfInterestId);
         if (pointOfInterestFromStore is null)
             return NotFound();
 
         city.PointsOfInterest.Remove(pointOfInterestFromStore);
 
         return NoContent();
+    }
+
+    private CityDto? FindCityByIdOrDefault(int cityId)
+    {
+        CityDto? city = _citiesDataStore.Cities.FirstOrDefault(c => c.Id == cityId);
+        if (city is null)
+            _logger.LogInformation($"City with id {cityId} wasn't found when accessing points of interest.");
+
+        return city;
+    }
+
+    private PointOfInterestDto? FindPointOfInterestByIdOrDefault(CityDto city, int pointOfInterestId)
+    {
+        PointOfInterestDto? pointOfInterest = city.PointsOfInterest.FirstOrDefault(c => c.Id == pointOfInterestId);
+        if (pointOfInterest is null)
+            _logger.LogInformation($"PointOfInterestDto with id {pointOfInterestId} wasn't found on City {city.Name}.");
+
+        return pointOfInterest;
     }
 }
