@@ -95,13 +95,13 @@ public class PointsOfInterestController : ControllerBase
         if (pointOfInterestFromStore is null)
             return NotFound();
 
-        var pointOfInterestUpdateDto = new PointOfInterestUpdateDto()
-        {
-            Name = pointOfInterestPatchDto.Name is not null ? pointOfInterestPatchDto.Name.Value.NewValue : pointOfInterestFromStore.Name,
-            Description = pointOfInterestPatchDto.Description is not null ? pointOfInterestPatchDto.Description.Value.NewValue : pointOfInterestFromStore.Description,
-        };
+        if (pointOfInterestPatchDto.Name is not null)
+            pointOfInterestFromStore.Name = pointOfInterestPatchDto.Name.Value.NewValue;
 
-        return Update(cityId, pointOfInterestId, pointOfInterestUpdateDto);
+        if (pointOfInterestPatchDto.Description is not null)
+            pointOfInterestFromStore.Description = pointOfInterestPatchDto.Description.Value.NewValue;
+
+        return NoContent();
     }
 
     [HttpDelete($"{{{nameof(pointOfInterestId)}}}")]
