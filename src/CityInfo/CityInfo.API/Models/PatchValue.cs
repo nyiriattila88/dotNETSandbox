@@ -1,3 +1,6 @@
 namespace CityInfo.API.Models;
 
-public readonly record struct PatchValue<T>(T NewValue);
+public readonly struct PatchValue<T>
+{
+    public T NewValue { get; init; }
+}
