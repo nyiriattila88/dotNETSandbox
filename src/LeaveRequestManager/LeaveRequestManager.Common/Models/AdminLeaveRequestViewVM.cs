@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace LeaveRequestManager.Common.Models;
 
-public record AdminLeaveRequestViewVM
+public class AdminLeaveRequestViewVM
 {
     [Display(Name = "Total Number Of Requests")]
     public int TotalRequests { get; set; }

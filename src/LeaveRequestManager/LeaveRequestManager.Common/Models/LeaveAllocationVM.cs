@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace LeaveRequestManager.Common.Models;
 
-public record LeaveAllocationVM
+public class LeaveAllocationVM
 {
     [Required]
     public int Id { get; set; }

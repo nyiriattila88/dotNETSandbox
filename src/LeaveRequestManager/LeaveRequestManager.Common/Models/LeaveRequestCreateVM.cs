@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace LeaveRequestManager.Common.Models;
 
-public record LeaveRequestCreateVM : IValidatableObject
+public class LeaveRequestCreateVM : IValidatableObject
 {
     [Required]
     [Display(Name = "Start Date")]

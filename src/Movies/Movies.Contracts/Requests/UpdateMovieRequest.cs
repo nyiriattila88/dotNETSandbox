@@ -1,6 +1,6 @@
 namespace Movies.Contracts.Requests;
 
-public record UpdateMovieRequest
+public class UpdateMovieRequest
 {
     public required string Title { get; init; }
 

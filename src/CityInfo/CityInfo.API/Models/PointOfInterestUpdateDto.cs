@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace CityInfo.API.Models;
 
-public record PointOfInterestUpdateDto
+public class PointOfInterestUpdateDto
 {
     [Required(ErrorMessage = $"{nameof(Name)} is required.")]
     [MaxLength(50)]

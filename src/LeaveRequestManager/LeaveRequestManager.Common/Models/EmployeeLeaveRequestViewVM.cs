@@ -1,6 +1,6 @@
 namespace LeaveRequestManager.Common.Models;
 
-public record EmployeeLeaveRequestViewVM
+public class EmployeeLeaveRequestViewVM
 {
     public EmployeeLeaveRequestViewVM(List<LeaveAllocationVM> leaveAllocations, List<LeaveRequestVM> leaveRequests)
     {

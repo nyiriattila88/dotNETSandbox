@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace CityInfo.API.Models;
 
-public record PointOfInterestDto
+public class PointOfInterestDto
 {
     [Required(ErrorMessage = $"{nameof(Id)} is required.")]
     public required int Id { get; set; }

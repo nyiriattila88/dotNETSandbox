@@ -1,6 +1,6 @@
 namespace CityInfo.API.Models;
 
-public record PointOfInterestPatchDto
+public class PointOfInterestPatchDto
 {
     public PatchValue<string>? Name { get; set; }
 

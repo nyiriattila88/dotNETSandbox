@@ -1,6 +1,6 @@
 namespace LeaveRequestManager.Common.Models;
 
-public record ErrorViewModel
+public class ErrorViewModel
 {
     public string RequestId { get; set; }
 

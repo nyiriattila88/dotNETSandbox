@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace LeaveRequestManager.Common.Models;
 
-public record EmployeeListVM
+public class EmployeeListVM
 {
     public string Id { get; set; }
 
