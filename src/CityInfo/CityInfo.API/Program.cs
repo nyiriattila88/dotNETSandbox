@@ -26,7 +26,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddSingleton<FileExtensionContentTypeProvider>();
 builder.Services.AddSingleton<CitiesDataStore>();
 
-builder.Services.AddTransient<LocalMailService>();
+builder.Services.AddTransient<IMailService, LocalMailService>();
 
 WebApplication app = builder.Build();
 

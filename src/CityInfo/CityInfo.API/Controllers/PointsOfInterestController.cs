@@ -10,7 +10,7 @@ public class PointsOfInterestController : ControllerBase
 {
     private readonly CitiesDataStore _citiesDataStore;
     private readonly ILogger<PointsOfInterestController> _logger;
-    private readonly LocalMailService _localMailService;
+    private readonly IMailService _mailservice;
 
     public PointsOfInterestController(
         CitiesDataStore citiesDataStore,
@@ -19,7 +19,7 @@ public class PointsOfInterestController : ControllerBase
     {
         _citiesDataStore = citiesDataStore ?? throw new ArgumentNullException(nameof(citiesDataStore));
         _logger = logger ?? throw new ArgumentNullException(nameof(logger));
-        _localMailService = localMailService ?? throw new ArgumentNullException(nameof(localMailService));
+        _mailservice = localMailService ?? throw new ArgumentNullException(nameof(localMailService));
     }
 
     [HttpGet]
@@ -119,7 +119,7 @@ public class PointsOfInterestController : ControllerBase
             return NotFound();
 
         city.PointsOfInterest.Remove(pointOfInterestFromStore);
-        _localMailService.Send("Point of interest deleted.", $"Point of interest {pointOfInterestFromStore.Name} with id {pointOfInterestFromStore.Id} was deleted.");
+        _mailservice.Send("Point of interest deleted.", $"Point of interest {pointOfInterestFromStore.Name} with id {pointOfInterestFromStore.Id} was deleted.");
 
         return NoContent();
     }
