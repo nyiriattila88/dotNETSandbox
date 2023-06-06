@@ -26,9 +26,13 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddSingleton<FileExtensionContentTypeProvider>();
 builder.Services.AddSingleton<CitiesDataStore>();
 
+#if DEBUG
 builder.Services.AddTransient<IMailService, LocalMailService>();
-
+#else
+builder.Services.AddTransient<IMailService, CloudMailService>();
+#endif
 WebApplication app = builder.Build();
+
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
