@@ -16,7 +16,7 @@ public class FilesController : ControllerBase
     }
 
     [HttpGet]
-    public ActionResult<IEnumerable<string>> GetAll()
+    public async Task<ActionResult<IEnumerable<string>>> GetAll()
     {
         string directoryPath = "Resources";
 
@@ -28,7 +28,7 @@ public class FilesController : ControllerBase
     }
 
     [HttpGet($"{{{nameof(fileName)}}}")]
-    public ActionResult GetByName(string fileName)
+    public async Task<ActionResult> GetByName(string fileName)
     {
         string filePath = Path.GetFullPath($"Resources/{fileName}");
 

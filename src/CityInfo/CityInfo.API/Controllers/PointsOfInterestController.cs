@@ -23,7 +23,7 @@ public class PointsOfInterestController : ControllerBase
     }
 
     [HttpGet]
-    public ActionResult<IEnumerable<PointOfInterestDto>> GetAll(int cityId)
+    public async Task<ActionResult<IEnumerable<PointOfInterestDto>>> GetAll(int cityId)
     {
         CityDto? city = FindCityByIdOrDefault(cityId);
         if (city is null)
@@ -33,7 +33,7 @@ public class PointsOfInterestController : ControllerBase
     }
 
     [HttpGet($"{{{nameof(pointOfInterestId)}}}", Name = nameof(GetById))]
-    public ActionResult<PointOfInterestDto> GetById(int cityId, int pointOfInterestId)
+    public async Task<ActionResult<PointOfInterestDto>> GetById(int cityId, int pointOfInterestId)
     {
         CityDto? city = FindCityByIdOrDefault(cityId);
         if (city is null)
@@ -44,7 +44,7 @@ public class PointsOfInterestController : ControllerBase
     }
 
     [HttpPost]
-    public ActionResult<PointOfInterestDto> Create(int cityId, PointOfInterestCreateDto pointOfInterestCreateDto)
+    public async Task<ActionResult<PointOfInterestDto>> Create(int cityId, PointOfInterestCreateDto pointOfInterestCreateDto)
     {
         CityDto? city = FindCityByIdOrDefault(cityId);
         if (city is null)
@@ -71,7 +71,7 @@ public class PointsOfInterestController : ControllerBase
     }
 
     [HttpPut($"{{{nameof(pointOfInterestId)}}}")]
-    public ActionResult Update(int cityId, int pointOfInterestId, PointOfInterestUpdateDto pointOfInterestUpdateDto)
+    public async Task<ActionResult> Update(int cityId, int pointOfInterestId, PointOfInterestUpdateDto pointOfInterestUpdateDto)
     {
         CityDto? city = FindCityByIdOrDefault(cityId);
         if (city is null)
@@ -88,7 +88,7 @@ public class PointsOfInterestController : ControllerBase
     }
 
     [HttpPatch($"{{{nameof(pointOfInterestId)}}}")]
-    public ActionResult Patch(int cityId, int pointOfInterestId, PointOfInterestPatchDto pointOfInterestPatchDto)
+    public async Task<ActionResult> Patch(int cityId, int pointOfInterestId, PointOfInterestPatchDto pointOfInterestPatchDto)
     {
         CityDto? city = FindCityByIdOrDefault(cityId);
         if (city is null)
@@ -108,7 +108,7 @@ public class PointsOfInterestController : ControllerBase
     }
 
     [HttpDelete($"{{{nameof(pointOfInterestId)}}}")]
-    public ActionResult Delete(int cityId, int pointOfInterestId)
+    public async Task<ActionResult> Delete(int cityId, int pointOfInterestId)
     {
         CityDto? city = FindCityByIdOrDefault(cityId);
         if (city is null)

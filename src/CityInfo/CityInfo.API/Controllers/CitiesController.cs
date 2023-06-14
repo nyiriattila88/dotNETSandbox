@@ -15,10 +15,10 @@ public class CitiesController : ControllerBase
     }
 
     [HttpGet]
-    public ActionResult<IEnumerable<CityDto>> GetAll() => Ok(_citiesDataStore.Cities);
+    public async Task<ActionResult<IEnumerable<CityDto>>> GetAll() => Ok(_citiesDataStore.Cities);
 
     [HttpGet($"{{{nameof(id)}}}")]
-    public ActionResult<CityDto> GetById(int id)
+    public async Task<ActionResult<CityDto>> GetById(int id)
     {
         CityDto? city = _citiesDataStore.Cities.FirstOrDefault(c => c.Id == id);
         return city is not null ? Ok(city) : NotFound();
