@@ -1,5 +1,6 @@
 using CityInfo.API.Models;
 using CityInfo.API.Services;
+using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CityInfo.API.Controllers;
@@ -83,26 +84,6 @@ public class PointsOfInterestController : ControllerBase
 
         pointOfInterestFromStore.Name = pointOfInterestUpdateDto.Name;
         pointOfInterestFromStore.Description = pointOfInterestUpdateDto.Description;
-
-        return NoContent();
-    }
-
-    [HttpPatch($"{{{nameof(pointOfInterestId)}}}")]
-    public async Task<ActionResult> Patch(int cityId, int pointOfInterestId, PointOfInterestPatchDto pointOfInterestPatchDto)
-    {
-        CityDto? city = FindCityByIdOrDefault(cityId);
-        if (city is null)
-            return NotFound();
-
-        PointOfInterestDto? pointOfInterestFromStore = FindPointOfInterestByIdOrDefault(city, pointOfInterestId);
-        if (pointOfInterestFromStore is null)
-            return NotFound();
-
-        if (pointOfInterestPatchDto.Name is not null)
-            pointOfInterestFromStore.Name = pointOfInterestPatchDto.Name.Value.NewValue;
-
-        if (pointOfInterestPatchDto.Description is not null)
-            pointOfInterestFromStore.Description = pointOfInterestPatchDto.Description.Value.NewValue;
 
         return NoContent();
     }
