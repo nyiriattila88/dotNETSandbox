@@ -26,7 +26,7 @@ public class EmployeesController : Controller
     }
 
     // GET: EmployeesController
-    public async Task<IActionResult> Index()
+    public async Task<ActionResult> Index()
     {
         IList<Employee> employees = await _userManager.GetUsersInRoleAsync(Roles.User);
         List<EmployeeListVM> model = _mapper.Map<List<EmployeeListVM>>(employees);

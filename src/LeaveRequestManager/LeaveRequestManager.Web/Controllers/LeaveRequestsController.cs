@@ -21,7 +21,7 @@ public class LeaveRequestsController : Controller
 
     [Authorize(Roles = Roles.Administrator)]
     // GET: LeaveRequests
-    public async Task<IActionResult> Index()
+    public async Task<ActionResult> Index()
     {
         AdminLeaveRequestViewVM model = await _leaveRequestRepository.GetAdminLeaveRequestList();
         return View(model);
@@ -34,7 +34,7 @@ public class LeaveRequestsController : Controller
     }
 
     // GET: LeaveRequests/Details/5
-    public async Task<IActionResult> Details(int? id)
+    public async Task<ActionResult> Details(int? id)
     {
         LeaveRequestVM model = await _leaveRequestRepository.GetLeaveRequestAsync(id);
         return model is null ? NotFound() : View(model);
@@ -42,7 +42,7 @@ public class LeaveRequestsController : Controller
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> ApproveRequest(int id, bool approved)
+    public async Task<ActionResult> ApproveRequest(int id, bool approved)
     {
         try
         {
@@ -59,7 +59,7 @@ public class LeaveRequestsController : Controller
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Cancel(int id)
+    public async Task<ActionResult> Cancel(int id)
     {
         try
         {
@@ -75,7 +75,7 @@ public class LeaveRequestsController : Controller
     }
 
     // GET: LeaveRequests/Create
-    public async Task<IActionResult> Create()
+    public async Task<ActionResult> Create()
     {
         var model = new LeaveRequestCreateVM
         {
@@ -89,7 +89,7 @@ public class LeaveRequestsController : Controller
     // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Create(LeaveRequestCreateVM model)
+    public async Task<ActionResult> Create(LeaveRequestCreateVM model)
     {
         try
         {

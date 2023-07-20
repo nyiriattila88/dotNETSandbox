@@ -27,14 +27,14 @@ public class LeaveTypesController : Controller
     }
 
     // GET: LeaveTypes
-    public async Task<IActionResult> Index()
+    public async Task<ActionResult> Index()
     {
         List<LeaveTypeVM> leaveTypes = _mapper.Map<List<LeaveTypeVM>>(await _leaveTypeRepository.GetAllAsync());
         return View(leaveTypes);
     }
 
     // GET: LeaveTypes/Details/5
-    public async Task<IActionResult> Details(int? id)
+    public async Task<ActionResult> Details(int? id)
     {
         LeaveType leaveType = await _leaveTypeRepository.GetAsync(id);
         if (leaveType is null)
@@ -45,7 +45,7 @@ public class LeaveTypesController : Controller
     }
 
     // GET: LeaveTypes/Create
-    public IActionResult Create() => View();
+    public ActionResult Create() => View();
 
     // POST: LeaveTypes/Create
     // To protect from overposting attacks, enable the specific properties you want to bind to.
@@ -53,7 +53,7 @@ public class LeaveTypesController : Controller
     [HttpPost]
     [ValidateAntiForgeryToken]
 
-    public async Task<IActionResult> Create(LeaveTypeVM leaveTypeVM)
+    public async Task<ActionResult> Create(LeaveTypeVM leaveTypeVM)
     {
         if (ModelState.IsValid)
         {
@@ -66,7 +66,7 @@ public class LeaveTypesController : Controller
     }
 
     // GET: LeaveTypes/Edit/5
-    public async Task<IActionResult> Edit(int? id)
+    public async Task<ActionResult> Edit(int? id)
     {
         LeaveType leaveType = await _leaveTypeRepository.GetAsync(id);
         if (leaveType is null)
@@ -81,7 +81,7 @@ public class LeaveTypesController : Controller
     // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Edit(int id, LeaveTypeVM leaveTypeVM)
+    public async Task<ActionResult> Edit(int id, LeaveTypeVM leaveTypeVM)
     {
         if (id != leaveTypeVM.Id)
             return NotFound();
@@ -115,7 +115,7 @@ public class LeaveTypesController : Controller
     // POST: LeaveTypes/Delete/5
     [HttpPost, ActionName("Delete")]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> DeleteConfirmed(int id)
+    public async Task<ActionResult> DeleteConfirmed(int id)
     {
         await _leaveTypeRepository.DeleteAsync(id);
         return RedirectToAction(nameof(Index));
@@ -123,7 +123,7 @@ public class LeaveTypesController : Controller
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> AllocateLeave(int id)
+    public async Task<ActionResult> AllocateLeave(int id)
     {
         await _leaveAllocationRepository.LeaveAllocation(id);
         return RedirectToAction(nameof(Index));

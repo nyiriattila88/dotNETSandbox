@@ -45,7 +45,7 @@ public class ForgotPasswordModel : PageModel
         public string Email { get; set; }
     }
 
-    public async Task<IActionResult> OnPostAsync()
+    public async Task<ActionResult> OnPostAsync()
     {
         if (ModelState.IsValid)
         {

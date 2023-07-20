@@ -13,10 +13,10 @@ public class HomeController : Controller
         _logger = logger;
     }
 
-    public IActionResult Index() => View();
+    public ActionResult Index() => View();
 
-    public IActionResult Privacy() => View();
+    public ActionResult Privacy() => View();
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-    public IActionResult Error() => View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+    public ActionResult Error() => View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
 }
